@@ -1,0 +1,8 @@
+name: test
+info: test2
+allo:
+  test: allo
+
+Args:
+  name: Rémi
+  count: 4
