@@ -1,19 +1,15 @@
 use std::fs;
 use clap::Parser;
-use log::{error, info, warn, debug};
+use log::{error, warn};
 use env_logger;
 mod args;
-mod peer;
 
 use env_logger::Env;
 
-use futures::StreamExt;
-
-#[async_std::main]
-async fn main() {
+fn main() {
     let mut arg = args::Args::parse();
     println!("{:?}", arg);
-    setup_logger(&arg).await;
+    setup_logger(&arg);
 
     let config = &arg.config;
     let config_json = match fs::metadata(config) {
@@ -25,16 +21,9 @@ async fn main() {
     };
 
     arg.apply_config(&config_json);
-    match peer::p2p(arg.remote_peer).await {
-        Ok(_) => {},
-        Err(e) => {
-            error!("{:?}", e);
-        }
-    }
 }
 
-async fn setup_logger(arg: &args::Args) {
-    println!("=> {:?}", arg);
+fn setup_logger(arg: &args::Args) {
     let log_level = arg.log_level.unwrap_or({
         args::LogLevel::Info
     });

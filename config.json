@@ -1,9 +1,7 @@
 {
 	"Args": {
-		"name":	"dazughdjkazdj",
+		"name":	"Rémi",
 		"count": 3,
-		"test": "info",
-		"pisse": "caac"
-	},
-	"log_level": "error"
+		"paca": "info"
+	}
 }

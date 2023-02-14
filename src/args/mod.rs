@@ -1,7 +1,6 @@
 use clap::Parser;
 use structopt::StructOpt;
 use serde_derive::{Deserialize, Serialize};
-// use log::{warn, LevelFilter};
 use std::str::FromStr;
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Copy, Clone)]
@@ -47,6 +46,9 @@ pub struct Args {
 
    #[arg(short, long = "remote-peer")]
    pub remote_peer: Option<String>,
+
+   #[arg(short, long = "paca")]
+   pub paca: Option<String>,
 
    /// The path to the configuration file to be used, with a default value of "./config.json".
    #[arg(short, long = "config", default_value = "./config.json")]
